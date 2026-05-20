@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/University/UPB/WP2/**)",
+      "Bash(./gradlew compileJava --console=plain)"
+    ]
+  }
+}
