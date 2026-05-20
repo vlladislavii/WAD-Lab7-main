@@ -34,10 +34,10 @@ jobs:
       - name: Run backend tests
         run: ./gradlew test
         env:
-          vlad1: ${{ secrets.vlad1 }}
+          VLAD: ${{ secrets.VLAD }}
 
       # Task 3: generate the JaCoCo coverage report
       - name: Generate JaCoCo coverage report
         run: ./gradlew jacocoTestReport
         env:
-          vlad1: ${{ secrets.vlad1 }}
+          VLAD: ${{ secrets.VLAD }}
