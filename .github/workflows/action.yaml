@@ -39,5 +39,9 @@ jobs:
       # Task 3: generate the JaCoCo coverage report
       - name: Generate JaCoCo coverage report
         run: ./gradlew jacocoTestReport
-        env:
-          VLAD: ${{ secrets.VLAD }}
+
+      - name: Upload JaCoCo report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: build/reports/jacoco/test/html/
