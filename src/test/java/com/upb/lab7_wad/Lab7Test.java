@@ -13,6 +13,6 @@ class Lab7Test {
 
     @Test
     void environment() {
-        assertEquals("vlad1", System.getenv("lab"));
+        assertEquals("lab", System.getenv("vlad1"));
     }
 }
