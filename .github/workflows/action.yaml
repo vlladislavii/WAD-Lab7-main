@@ -1,8 +1,14 @@
 name: Lab 7
-#TODO The pipeline should be triggered only on push to a "test" branch
+
+# Task 4: the pipeline runs only when pushing to (or opening a PR against) the "test" branch
 on:
+  # workflow should be triggered only when pushing on a specific branch
   push:
+    branches:
+      - test
   pull_request:
+    branches:
+      - test
 
 jobs:
   test:
@@ -21,9 +27,17 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
-      # TODO: Run backend tests in the pipeline
+        run: ./gradlew build -x test
 
-      # TODO: Run the Jacoco report in the pipeline (Jacoco already exists)
+      # Task 1: run all backend tests in the pipeline
+      # Task 2: pass the GitHub secret to the tests as an environment variable (for the environment() test)
+      - name: Run backend tests
+        run: ./gradlew test
+        env:
+          vlad1: ${{ secrets.vlad1 }}
 
-      # TODO: Set GitHub secrets and read them in the pipeline (for the environmentTest)
+      # Task 3: generate the JaCoCo coverage report
+      - name: Generate JaCoCo coverage report
+        run: ./gradlew jacocoTestReport
+        env:
+          vlad1: ${{ secrets.vlad1 }}
